@@ -1,0 +1,392 @@
+::-moz-selection {
+  background: #3b627d;
+  color: #fff;
+  text-shadow: none;
+}
+::selection {
+  background: #3b627d;
+  color: #fff;
+  text-shadow: none;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+a {
+	color: #e29b14;
+}
+
+a:hover {
+	color:#e29b14;
+}
+
+footer .nav-list li a:hover,footer ul.regular li a:hover  {
+	color:#6f8ca0;
+}
+
+.btn-link:hover {
+  color: #6f8ca0;
+}
+
+.btn-color {
+  background: #3b627d;
+	border: 1px solid #3b627d;
+  *background: #6f8ca0;
+}
+.btn-color:hover,
+.btn-color.active,
+.btn-color.disabled,
+.btn-color[disabled] {
+  background: #6f8ca0;
+  *background: #6f8ca0;
+}
+
+.btn-color2 {
+  background: #902525;
+	border: 1px solid #902525;
+  *background: #6f8ca0;
+}
+.btn-color2:hover,
+.btn-color2.active,
+.btn-color2.disabled,
+.btn-color2[disabled] {
+  background: #a92c2c;
+  *background: #a92c2c;
+}
+
+/* sequence slider */
+
+.info  h2{
+	background: #3b627d;
+}
+
+/* fontawesome icons */
+.icon-square:hover,
+.icon-rounded:hover,
+.icon-circled:hover {
+    background-color: #3b627d;
+}
+[class^="icon-"].active,
+[class*=" icon-"].active {
+    background-color: #3b627d;
+}
+
+.iconmain-square:hover,
+.iconmain-rounded:hover,
+.iconmain-circled:hover {
+    background-color: #ecc277;
+}
+
+.icon1-square:hover,
+.icon1-rounded:hover,
+.icon1-circled:hover {
+    background-color: #ecc277;
+}
+
+[class^="iconmain-"].active,
+[class*=" iconmain-"].active {
+    background-color: #ecc277;
+}
+
+
+[class^="icon1-"].active,
+[class*=" icon1-"].active {
+    background-color: #ecc277;
+}
+
+a:hover > .icon1-circled{
+  background-color: #ecc277;
+}
+
+a:hover > .icon2-circled{
+  background-color: #f1abee;
+}
+
+a:hover > .icon3-circled{
+  background-color: #99df90;
+}
+
+a:hover > .icon4-circled{
+  background-color: #ecaa90;
+}
+
+a:hover > .icon5-circled{
+  background-color: #9677ec;
+}
+
+a:hover > .icon6-circled{
+  background-color: #ec7777;
+}
+
+a:hover > .icon7-circled{
+  background-color: #77a0ec;
+}
+
+a:hover > .icon8-circled{
+  background-color: #c777ec;
+}
+
+.icon2-square:hover,
+.icon2-rounded:hover,
+.icon2-circled:hover {
+    background-color: #f1abee;
+}
+[class^="icon2-"].active,
+[class*=" icon2-"].active {
+    background-color: #f1abee;
+}
+
+.icon3-square:hover,
+.icon3-rounded:hover,
+.icon3-circled:hover {
+    background-color: #99df90;
+}
+[class^="icon3-"].active,
+[class*=" icon3-"].active {
+    background-color: #99df90;
+}
+
+.icon4-square:hover,
+.icon4-rounded:hover,
+.icon4-circled:hover {
+    background-color: #ecaa90;
+}
+[class^="icon4-"].active,
+[class*=" icon4-"].active {
+    background-color: #ecaa90;
+}
+
+.icon5-square:hover,
+.icon5-rounded:hover,
+.icon5-circled:hover {
+    background-color: #9677ec;
+}
+[class^="icon5-"].active,
+[class*=" icon5-"].active {
+    background-color: #9677ec;
+}
+
+.icon6-square:hover,
+.icon6-rounded:hover,
+.icon6-circled:hover {
+    background-color: #ec7777;
+}
+[class^="icon6-"].active,
+[class*=" icon6-"].active {
+    background-color: #ec7777;
+}
+
+.icon7-square:hover,
+.icon7-rounded:hover,
+.icon7-circled:hover {
+    background-color: #77a0ec;
+}
+[class^="icon7-"].active,
+[class*=" icon7-"].active {
+    background-color: #77a0ec;
+}
+
+.icon8-square:hover,
+.icon8-rounded:hover,
+.icon8-circled:hover {
+    background-color: #c777ec;
+}
+[class^="icon8-"].active,
+[class*=" icon8-"].active {
+    background-color: #c777ec;
+}
+
+/* header */
+.navbar .nav li.active {
+	border-top:5px solid #3b627d;	
+
+}
+.navbar .nav li.active a {
+	color:#3b627d;	
+}
+
+.navbar .nav li ul.dropdown-menu li a:hover, .navbar .nav li.active ul.dropdown-menu li a:hover  {
+	background:#3b627d;
+	
+}
+.color {
+	background: #3b627d;
+	color:#fff;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: #3b627d;
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+}
+
+/* sequence slider */
+.sequence-nav .next:hover,.sequence-nav .prev:hover {
+	background: #3b627d;
+}
+
+/* accordion */
+.accordion-heading a:hover {
+	color: #3b627d;
+}
+.accordion-heading .active{
+	color: #3b627d;
+}
+
+/* pricing box */
+.priceBox.special .emphasis {
+  background: #3b627d;
+}
+
+/* tagline */
+.tagline {
+	border-bottom:5px solid #3b627d;
+}
+
+
+
+/* button */
+.btn-link {
+	color: #3b627d;
+}
+
+.nav .dropdown-toggle .caret {
+  margin-top: 6px;
+  border-top-color: #3b627d;
+  border-bottom-color: #3b627d;
+}
+
+
+
+/* tabs */
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+  color: #ffffff;
+  background-color: #3b627d;
+}
+
+/* accordion */
+.accordion-heading a.accordion-toggle:hover {
+	color: #3b627d;
+}
+
+/* label */
+.label-orange,
+.badge-orange {
+  background-color: #3b627d;
+}
+
+
+/* nav */
+.nav-list > .active > a,
+.nav-list > .active > a:hover {
+  background: #3b627d;
+}
+
+
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+  background: #3b627d;
+}
+
+.nav .dropdown-toggle .caret {
+  border-top-color: #3b627d;
+  border-bottom-color: #3b627d;
+}
+
+/* custom progress bar according template skin */
+.progress-orange .bar,
+.progress .bar-orange {
+  background: #3b627d;
+}
+
+.progress-orange.progress-striped .bar,
+.progress-striped .bar-orange {
+  background: #3b627d;
+}
+
+/* pagination */
+
+.pagination ul li a:hover {
+  background: #3b627d;
+  border-color:#3b627d;
+}
+
+
+/* widget */
+aside .widget ul.cat li a:hover {
+	color: #3b627d;
+}
+
+aside .widget ul.recent-posts li a:hover {
+	color: #3b627d;
+}
+
+/* article */
+
+.entry-body a h5.title:hover {
+	color: #3b627d;
+}
+
+article.blog-post .post-heading h3 a:hover {
+	color:#3b627d;
+}
+
+article.last-post {
+	background: #255f88;
+}
+
+ul.time-post li.year{
+	border-bottom:1px solid #3b627d;
+}
+
+section#subintro {
+	background: #3b627d;
+}
+
+
+ /* 404 */
+ 
+
+.error-body{
+	background:#3b627d;
+	padding:20px;
+	text-align:center;
+}
+
+
+/* misc */
+a.thumbnail:hover {
+  border-color: #3b627d;
+}
+
+ul.filter li.active a:hover,.flex-control-nav li a:hover, .flex-control-nav li a.active{
+	background: #3b627d;
+}
+
+.thumbnail h4 a:hover, .thumbnail .meta  span a:hover, ul.recent li h6 a:hover, ul.post-meta li a:hover, .media-body span, .media-body .media-heading a:hover, form label span, article.last-post h5 a:hover{
+	color: #3b627d;
+	text-decoration:none;
+}
+
+.text-justify {
+  text-align: justify;
+}

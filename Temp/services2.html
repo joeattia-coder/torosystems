@@ -40,48 +40,8 @@
   ======================================================= -->
 </head>
 
-<body data-spy="scroll" data-target=".bs-docs-sidebar">
-  <header>
-    <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <!-- logo -->
-          <a class="brand logo" href="index.html" alt="Toro Systems">
-			<img src="assets/img/logo.png" alt="Toro Systems" />
-			</a>
-          <!-- end logo -->
-          <!-- top menu -->
-          <div class="navigation">
-            <nav>
-              <ul class="nav topnav">
-                <li>
-                  <a href="index.html" alt="Home">Home</a>
-                </li>
-                <li>
-                  <a href="about.html">About</a>
-                </li>
-                <li class="dropdown active">
-                  <a href="#">Services</a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#StrategicPlanning" alt="Strategic IT Planning">Strategic IT Planning</a></li>
-                    <li><a href="#TechnicalSupport" alt="Technical Support">Technical Support</a></li>
-                    <li><a href="#InfrastructureSupport" alt="Infrastructure Support">Infrastructure Support</a></li>
-                    <li><a href="#CloudComputing" alt="Cloud Computing">Cloud Computing</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="contact.html">Contact</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <!-- end menu -->
-        </div>
-      </div>
-    </div>
-  </header>
+<body class="site-layout" data-nav="services" data-spy="scroll" data-target=".bs-docs-sidebar">
+  <header><!--#include virtual="/partials/site-header.inc" --></header>
   <!-- Subhead
 ================================================== -->
   <section id="subintro">
@@ -288,73 +248,7 @@
   </section>
   <!-- Footer
  ================================================== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="span4">
-          <div class="widget">
-            <h5>Browse pages</h5>
-            <ul class="regular">
-              <li><a href="#">Work for us</a></li>
-              <li><a href="#">Creative process</a></li>
-              <li><a href="#">Case study</a></li>
-              <li><a href="#">Scaffold awwards</a></li>
-              <li><a href="#">Meet the team</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="span4">
-          <div class="widget">
-            <h5>Recent blog posts</h5>
-            <ul class="regular">
-              <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-              <li><a href="#">Mea malis nominavi insolens ut</a></li>
-              <li><a href="#">Minim timeam has no aperiri sanctus ei mea per pertinax</a></li>
-              <li><a href="#">Te malorum dignissim eos quod sensibus</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="span4">
-          <div class="widget">
-            <!-- logo -->
-            <a class="brand logo" href="index.html" alt="Toro Systems">
-							<img src="assets/img/logo-dark.png" alt="" />
-						</a>
-            <!-- end logo -->
-            <address>
-							<strong>Registered Companyname, Inc.</strong><br>
-							 8895 Somename Ave, Suite 600<br>
-							 San Francisco, CA 94107<br>
-							<abbr title="Phone">P:</abbr> (123) 456-7890
-						</address>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="verybottom">
-      <div class="container">
-        <div class="row">
-          <div class="span6">
-            <p>
-              &copy; Toro Systems - All right reserved
-            </p>
-          </div>
-          <div class="span6">
-            <div class="credits">
-              <!--
-                All the links in the footer should remain intact.
-                You can delete the links only if you purchased the pro version.
-                Licensing information: https://bootstrapmade.com/license/
-                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Serenity
-              
-              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-              -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer"><!--#include virtual="/partials/site-footer.inc" --></footer>
 
   <!-- JavaScript Library Files -->
   <script src="assets/js/jquery.min.js"></script>
@@ -372,6 +266,7 @@
   <script src="assets/js/hover/setting.js"></script>
 
   <!-- Template Custom JavaScript File -->
+  <script src="../assets/js/shared-layout.js"></script>
   <script src="assets/js/custom.js"></script>
 
 

@@ -15,6 +15,32 @@
   clear: both;
 }
 
+html, body {
+  height: 100%;
+}
+
+body.site-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.site-layout header,
+body.site-layout section#intro,
+body.site-layout section#subintro,
+body.site-layout section#bottom,
+body.site-layout footer.footer {
+  flex: 0 0 auto;
+}
+
+body.site-layout section#maincontent {
+  flex: 1 0 auto;
+}
+
+body.site-layout footer.footer {
+  margin-top: auto;
+}
+
 .video-container, .map-container {
   position: relative;
   margin: 0 0 15px 0;

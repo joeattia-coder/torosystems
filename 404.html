@@ -40,68 +40,9 @@
   ======================================================= -->
 </head>
 
-<body data-spy="scroll" data-target=".bs-docs-sidebar">
+<body class="site-layout" data-spy="scroll" data-target=".bs-docs-sidebar">
   <header>
-    <!-- Navbar
-    ================================================== -->
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid" style="background-color:whitesmoke;">
-                <div class="container">
-                <div class="navbar-text">
-                    <div class="pull-left">
-                        <p style="margin: 0;">
-                            <!-- <li><a href="#" title="Twitter"><i class="icon-rounded icon-32 icon-twitter"></i></a></li> -->
-                            <a style="text-decoration: none;" href="https://www.facebook.com/toroitservices/" alt="Facebook" title="Facebook"><i class="icon-rounded icon-32 icon-facebook"></i></a>
-                            <!-- <li><a href="#" title="Google plus"><i class="icon-rounded icon-32 icon-google-plus"></i></a></li> -->
-                            <a style="text-decoration: none;" href="https://www.linkedin.com/company/torosystems" title="Linkedin" alt="Linkedin"><i class="icon-rounded icon-32 icon-linkedin"></i></a>
-                            <!-- <li><a href="#" title="Pinterest"><i class="icon-rounded icon-32 icon-pinterest"></i></a></li> -->
-                            <a style="text-decoration: none;" href="https://twitter.com/ToroSystems" title="Twitter" alt="Twitter"><i class="icon-rounded icon-32 icon-twitter"></i></a>
-                            
-                        </p>
-                    </div>
-                    <div class="pull-right">
-                        <p style="margin-bottom: 0;">
-                            <i class="icon-phone icon-white" style="color:#bf0707;"></i>
-                            <strong>1 888 Toro Sys (867 6797)</strong>
-                        </p>
-                    </div>
-                </div>
-                </div>
-                </div>    
-          <div class="container">
-            <!-- logo -->
-            <a class="brand logo" href="index.html" alt="Toro Systems"><img src="assets/img/logo.png" alt="Toro Systems"></a>
-            <!-- end logo -->
-            <!-- top menu -->
-            <div class="navigation">
-              <nav>
-                <ul class="nav topnav">
-                    <li>
-                      <a href="index.html" alt="Home">Home</a>
-                    </li>
-                    <li>
-                      <a href="about.html" alt="About">About</a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="services.html" alt="Services">Services</a>
-                      <ul class="dropdown-menu">
-                        <li><a href="services#StrategicPlanning" alt="Strategic Planning">Strategic IT Planning</a></li>
-                        <li><a href="services#TechnicalSupport" alt="Technical Support">Technical Support</a></li>
-                        <li><a href="services#InfrastructureSupport" alt="Infrastructure Support">Infrastructure Support</a></li>
-                        <li><a href="services#cloudcomputing" alt="Cloud Computing">Cloud Computing</a></li>
-                      </ul>
-                    </li>
-                    <li>
-                      <a href="contact.html" alt="Contact Us">Contact</a>
-                    </li>
-                  </ul>
-              </nav>
-            </div>
-            <!-- end menu -->
-          </div>
-        </div>
-      </div>
+    <!--#include virtual="/partials/site-header.inc" -->
   </header>
   <!-- Subhead
 ================================================== -->
@@ -150,20 +91,7 @@
   </section>
   <!-- Footer
  ================================================== -->
- <footer class="footer">
-    <div class="verybottom">
-      <div class="container">
-        <div class="row">
-          <div class="span6">
-            <p>
-              &copy; Toro Systems - All right reserved
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </footer>
+ <footer class="footer"><!--#include virtual="/partials/site-footer.inc" --></footer>
 
   <!-- JavaScript Library Files -->
   <script src="assets/js/jquery.min.js"></script>
@@ -181,6 +109,7 @@
   <script src="assets/js/hover/setting.js"></script>
 
   <!-- Template Custom JavaScript File -->
+  <script src="assets/js/shared-layout.js"></script>
   <script src="assets/js/custom.js"></script>
 
 

@@ -89,29 +89,49 @@ jQuery(document).ready(function($) {
       }
     });
     if (ferror) return false;
-    else var str = $(this).serialize();
-    var action = $(this).attr('action');
-    if( ! action ) {
-      action = 'contactform/contactform.php';
-    }
+
+    var form = $(this);
+    var action = form.attr('action') || '/api/contact';
+    var button = form.find('button[type="submit"]');
+    var payload = {
+      name: form.find('input[name="name"]').val(),
+      email: form.find('input[name="email"]').val(),
+      subject: form.find('input[name="subject"]').val(),
+      message: form.find('textarea[name="message"]').val(),
+      company: form.find('input[name="company"]').val()
+    };
+
+    $("#sendmessage").removeClass("show");
+    $("#errormessage").removeClass("show").html('');
+    button.prop('disabled', true).text('Sending...');
+
     $.ajax({
       type: "POST",
       url: action,
-      data: str,
-      success: function(msg) {
-        // alert(msg);
-        if (msg == 'OK') {
-          $("#sendmessage").addClass("show");
-          $("#errormessage").removeClass("show");
-          $('.contactForm').find("input, textarea").val("");
-        } else {
-          $("#sendmessage").removeClass("show");
-          $("#errormessage").addClass("show");
-          $('#errormessage').html(msg);
-        }
-
+      data: JSON.stringify(payload),
+      contentType: 'application/json; charset=UTF-8',
+      dataType: 'json'
+    }).done(function(response) {
+      if (response && response.ok) {
+        $("#sendmessage").addClass("show");
+        $('.contactForm').find("input[type!=hidden], textarea").val("");
+      } else {
+        $("#errormessage").addClass("show");
+        $('#errormessage').html(response && response.message ? response.message : 'We could not send your message. Please try again.');
       }
+    }).fail(function(xhr) {
+      var message = 'We could not send your message. Please try again.';
+
+      if (xhr.responseJSON && xhr.responseJSON.message) {
+        message = xhr.responseJSON.message;
+      }
+
+      $("#errormessage").addClass("show");
+      $('#errormessage').html(message);
+    }).always(function() {
+      button.prop('disabled', false).text('Send Request');
     });
+
     return false;
   });
 

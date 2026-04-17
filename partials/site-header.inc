@@ -21,7 +21,7 @@
     </div>
 
     <div class="container">
-      <a class="brand logo" href="/index.html" alt="Toro Systems">
+      <a class="brand logo" href="/" alt="Toro Systems">
         <img src="/assets/img/logo.png" alt="Toro Systems">
       </a>
 
@@ -29,7 +29,7 @@
         <nav>
           <ul class="nav topnav">
             <li data-nav-item="home">
-              <a href="/index.html" alt="Home">Home</a>
+              <a href="/" alt="Home">Home</a>
             </li>
             <li data-nav-item="about">
               <a href="/about.html" alt="About">About</a>

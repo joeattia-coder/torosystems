@@ -1,0 +1,22 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/404.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ]
+}

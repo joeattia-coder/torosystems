@@ -1,6 +1,20 @@
 jQuery(document).ready(function($) {
   "use strict";
 
+  function buildErrorMessage(response, fallbackMessage) {
+    var message = fallbackMessage;
+
+    if (response && response.message) {
+      message = response.message;
+    }
+
+    if (response && response.detail) {
+      message += '<br><small>' + $('<div>').text(response.detail).html() + '</small>';
+    }
+
+    return message;
+  }
+
   //Contact
   $('form.contactForm').submit(function() {
     var f = $(this).find('.form-group'),
@@ -117,14 +131,10 @@ jQuery(document).ready(function($) {
         $('.contactForm').find("input[type!=hidden], textarea").val("");
       } else {
         $("#errormessage").addClass("show");
-        $('#errormessage').html(response && response.message ? response.message : 'We could not send your message. Please try again.');
+        $('#errormessage').html(buildErrorMessage(response, 'We could not send your message. Please try again.'));
       }
     }).fail(function(xhr) {
-      var message = 'We could not send your message. Please try again.';
-
-      if (xhr.responseJSON && xhr.responseJSON.message) {
-        message = xhr.responseJSON.message;
-      }
+      var message = buildErrorMessage(xhr.responseJSON, 'We could not send your message. Please try again.');
 
       $("#errormessage").addClass("show");
       $('#errormessage').html(message);

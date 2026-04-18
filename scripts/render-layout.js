@@ -2,8 +2,11 @@ const fs = require('fs');
 const path = require('path');
 
 const projectRoot = process.cwd();
+const analyticsModuleSource = path.join(projectRoot, 'node_modules', '@vercel', 'analytics', 'dist', 'index.mjs');
+const analyticsModuleTarget = path.join(projectRoot, 'assets', 'js', 'vercel-analytics.mjs');
 const headerHtml = fs.readFileSync(path.join(projectRoot, 'partials', 'site-header.inc'), 'utf8').trim();
 const footerHtml = fs.readFileSync(path.join(projectRoot, 'partials', 'site-footer.inc'), 'utf8').trim();
+const analyticsScriptTag = '<script type="module" src="/assets/js/vercel-analytics-init.mjs"></script>';
 
 function indentBlock(block, indent) {
   return block
@@ -20,6 +23,16 @@ function replaceSection(html, pattern, openTag, closeTag, block) {
       indent + closeTag
     ].join('\n');
   });
+}
+
+function ensureAnalytics(html) {
+  const withoutExistingTag = html.replace(/^\s*<script type="module" src="\/assets\/js\/vercel-analytics-init\.mjs"><\/script>\s*$/gm, '').trimEnd();
+
+  if (withoutExistingTag.includes(analyticsScriptTag)) {
+    return withoutExistingTag;
+  }
+
+  return withoutExistingTag.replace(/<\/body>/i, '  ' + analyticsScriptTag + '\n</body>');
 }
 
 function getHtmlTargets() {
@@ -47,6 +60,12 @@ function getHtmlTargets() {
 
 let updatedCount = 0;
 
+if (!fs.existsSync(analyticsModuleSource)) {
+  throw new Error('Missing @vercel/analytics build asset. Run npm install before building.');
+}
+
+fs.copyFileSync(analyticsModuleSource, analyticsModuleTarget);
+
 getHtmlTargets().forEach((relativePath) => {
   const absolutePath = path.join(projectRoot, relativePath);
   const originalHtml = fs.readFileSync(absolutePath, 'utf8');
@@ -54,6 +73,7 @@ getHtmlTargets().forEach((relativePath) => {
 
   nextHtml = replaceSection(nextHtml, /(^[ \t]*)<header>[\s\S]*?<\/header>/m, '<header>', '</header>', headerHtml);
   nextHtml = replaceSection(nextHtml, /(^[ \t]*)<footer class="footer">[\s\S]*?<\/footer>/m, '<footer class="footer">', '</footer>', footerHtml);
+  nextHtml = ensureAnalytics(nextHtml);
 
   if (nextHtml !== originalHtml) {
     fs.writeFileSync(absolutePath, nextHtml, 'utf8');

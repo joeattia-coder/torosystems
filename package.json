@@ -1,6 +1,10 @@
 {
   "name": "toro-systems-site",
   "private": true,
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "nodemailer": "^6.10.1"
+  },
   "scripts": {
     "build": "node scripts/render-layout.js"
   }

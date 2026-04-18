@@ -1,4 +1,14 @@
+const nodemailer = require('nodemailer');
+
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function getEnv(name) {
+  return process.env[name] || process.env[name.toLowerCase()] || '';
+}
+
+function isTrue(value) {
+  return String(value).toLowerCase() === 'true';
+}
 
 function parseBody(body) {
   if (!body) {
@@ -22,6 +32,36 @@ function sanitize(value) {
   }
 
   return value.trim();
+}
+
+function escapeHtml(value) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function createTransport() {
+  const host = sanitize(getEnv('SMTP_HOST'));
+  const port = Number(getEnv('SMTP_PORT'));
+  const user = sanitize(getEnv('SMTP_USER'));
+  const password = sanitize(getEnv('SMTP_PASSWORD'));
+
+  if (!host || !port || !user || !password) {
+    return null;
+  }
+
+  return nodemailer.createTransport({
+    host,
+    port,
+    secure: isTrue(getEnv('SMTP_SECURE')),
+    auth: {
+      user,
+      pass: password
+    }
+  });
 }
 
 module.exports = async function handler(req, res) {
@@ -57,23 +97,27 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ ok: false, message: 'Please provide a little more detail in your message.' });
   }
 
-  if (!process.env.RESEND_API_KEY) {
+  const transporter = createTransport();
+
+  if (!transporter) {
     return res.status(500).json({ ok: false, message: 'Email service is not configured yet.' });
   }
 
-  const to = process.env.CONTACT_TO_EMAIL || 'joseph.attia@torosystems.ca';
-  const from = process.env.CONTACT_FROM_EMAIL || 'noreply@torosystems.ca';
+  const fromName = sanitize(getEnv('SMTP_FROM_NAME')) || 'Toro Systems';
+  const fromEmail = sanitize(getEnv('SMTP_FROM_EMAIL'));
+  const fallbackReplyTo = sanitize(getEnv('SMTP_REPLY_TO'));
 
-  const emailResponse = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: email,
+  if (!fromEmail) {
+    return res.status(500).json({ ok: false, message: 'Email sender is not configured yet.' });
+  }
+
+  const to = sanitize(process.env.CONTACT_TO_EMAIL || '') || fromEmail;
+
+  try {
+    await transporter.sendMail({
+      from: `"${fromName}" <${fromEmail}>`,
+      to,
+      replyTo: email || fallbackReplyTo || undefined,
       subject: `Website Contact Form: ${subject}`,
       text: [
         'New contact form submission from torosystems.ca',
@@ -85,23 +129,20 @@ module.exports = async function handler(req, res) {
         'Message:',
         message
       ].join('\n'),
-      html: `
-        <h2>New contact form submission from torosystems.ca</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
-      `
-    })
-  });
-
-  if (!emailResponse.ok) {
-    const errorText = await emailResponse.text();
+      html: [
+        '<h2>New contact form submission from torosystems.ca</h2>',
+        `<p><strong>Name:</strong> ${escapeHtml(name)}</p>`,
+        `<p><strong>Email:</strong> ${escapeHtml(email)}</p>`,
+        `<p><strong>Subject:</strong> ${escapeHtml(subject)}</p>`,
+        '<p><strong>Message:</strong></p>',
+        `<p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>`
+      ].join('')
+    });
+  } catch (error) {
     return res.status(502).json({
       ok: false,
       message: 'We could not send your message right now. Please try again shortly.',
-      detail: errorText
+      detail: error.message
     });
   }
 

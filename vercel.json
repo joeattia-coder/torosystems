@@ -5,7 +5,7 @@
     {
       "source": "/index.html",
       "destination": "/",
-      "permanent": true
+      "statusCode": 308
     }
   ],
   "headers": [

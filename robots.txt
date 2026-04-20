@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://torosystems.ca/sitemap.xml
+Sitemap: https://www.torosystems.ca/sitemap.xml
